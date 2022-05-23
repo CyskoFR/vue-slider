@@ -10,7 +10,7 @@ const app = new Vue({
     el: `#app`,
     data: {
         currentIndex: 0,
-        autoplayIndex: null,
+        autoplayId: null,
         images: [
             {
                 src: 'img/01.jpg',
@@ -50,13 +50,16 @@ const app = new Vue({
             this.currentIndex = index;
         },
         autoplay() {
-            this.autoplayIndex = setInterval(() => {
+            this.autoplayId = setInterval(() => {
                 this.nextImage();
             }, 3000);
         },
         blockAutoplay() {
-            clearInterval(this.autoplayIndex);
+            clearInterval(this.autoplayId);
         },
     },
+    created() {
+        this.autoplay();
+    }
 });
 //   /VueJS
